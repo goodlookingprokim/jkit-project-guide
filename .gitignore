@@ -10,17 +10,20 @@ npm-debug.log*
 .vscode/
 .idea/
 
+# Environment
+.env
+.env.*
+
 # Golden Rabbit reference code (copyright - not distributed)
 golden-rabbit-antigravity-v1/
 
-# bkit local state
+# bkit local state (runtime, ephemeral)
 .bkit/
+docs/.bkit-memory.json
+docs/.pdca-status.json
 
-# Empty legacy directory
-JKit/
-
-# Backup (temporary)
-bkit-claude-code-backup/
+# Development artifacts
+screenshot*.png
 
 # Misc
 *.log
