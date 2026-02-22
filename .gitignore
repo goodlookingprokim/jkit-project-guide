@@ -1,0 +1,27 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+npm-debug.log*
+
+# IDE
+.vscode/
+.idea/
+
+# Golden Rabbit reference code (copyright - not distributed)
+golden-rabbit-antigravity-v1/
+
+# bkit local state
+.bkit/
+
+# Empty legacy directory
+JKit/
+
+# Backup (temporary)
+bkit-claude-code-backup/
+
+# Misc
+*.log
+*.tmp
