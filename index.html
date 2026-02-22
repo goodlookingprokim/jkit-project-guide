@@ -366,6 +366,107 @@
       color: var(--gray-500);
     }
 
+    /* Release Notes Section */
+    .release-section {
+      background: var(--gray-50);
+      border-top: 1px solid var(--gray-100);
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .release-section h2 {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .release-section .sub {
+      text-align: center;
+      color: var(--gray-500);
+      font-size: 15px;
+      margin-bottom: 40px;
+    }
+
+    .release-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .release-card:hover { border-color: var(--gray-300); }
+
+    .release-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+
+    .release-version {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 15px;
+      font-weight: 700;
+      background: var(--black);
+      color: var(--white);
+      padding: 4px 12px;
+      border-radius: 6px;
+    }
+
+    .release-date {
+      font-size: 13px;
+      color: var(--gray-500);
+    }
+
+    .release-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-top: 12px;
+      margin-bottom: 8px;
+    }
+
+    .release-body {
+      display: none;
+    }
+
+    .release-card.open .release-body {
+      display: block;
+    }
+
+    .release-body ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .release-body li {
+      font-size: 14px;
+      color: var(--gray-600);
+      padding: 4px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .release-body li::before {
+      content: "•";
+      position: absolute;
+      left: 4px;
+      color: var(--gray-400);
+    }
+
+    .release-link {
+      display: inline-block;
+      margin-top: 24px;
+      font-size: 14px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .release-link:hover { text-decoration: underline; }
+
     /* Tribute Section */
     .tribute-section {
       text-align: center;
@@ -736,6 +837,35 @@
     </div>
   </section>
 
+  <!-- Release Notes -->
+  <section class="release-section" id="releases">
+    <div class="container">
+      <h2>Release Notes</h2>
+      <p class="sub" id="release-star-count"></p>
+
+      <div id="release-list">
+        <div class="release-card open" onclick="this.classList.toggle('open')">
+          <div class="release-header">
+            <span class="release-version">v1.0.0</span>
+            <span class="release-date">2026-02-22</span>
+          </div>
+          <div class="release-title">Jkit CTO-Led Agent Team — Initial Release</div>
+          <div class="release-body">
+            <ul>
+              <li>5 Agents: VibeCTO, TDD Coach, Arch Mentor, Frontend Buddy, SaaS Guide</li>
+              <li>9 Slash Commands: /jkit, /jkit-start, /jkit-plan, /jkit-build, /jkit-test, /jkit-review, /jkit-team, /jkit-status, /jkit-next</li>
+              <li>Claude Code Marketplace 지원 (.claude-plugin)</li>
+              <li>GitHub Pages 랜딩 페이지</li>
+              <li>bkit submodule 연동</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <a href="https://github.com/goodlookingprokim/jkit-project-guide/releases" class="release-link">View all release notes →</a>
+    </div>
+  </section>
+
   <!-- Tribute -->
   <section class="tribute-section" id="tribute">
     <div class="container">
@@ -828,6 +958,17 @@
         t.classList.toggle('active', t.textContent.trim().toLowerCase() === name);
       });
     }
+
+    // Fetch star count from GitHub API
+    fetch('https://api.github.com/repos/goodlookingprokim/jkit-project-guide')
+      .then(r => r.json())
+      .then(data => {
+        const el = document.getElementById('release-star-count');
+        if (data.stargazers_count !== undefined) {
+          el.innerHTML = '<a href="https://github.com/goodlookingprokim/jkit-project-guide" style="color:var(--gray-600);text-decoration:none;font-weight:600;">⭐ ' + data.stargazers_count + ' Stars</a>';
+        }
+      })
+      .catch(() => {});
 
     function copyCmd(btn, text) {
       navigator.clipboard.writeText(text).then(() => {
