@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jkit - CTO-Led Agent Team Project Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --gray-50: #fafafa;
+      --gray-100: #f5f5f5;
+      --gray-200: #e5e5e5;
+      --gray-300: #d4d4d4;
+      --gray-500: #737373;
+      --gray-600: #525252;
+      --gray-700: #404040;
+      --gray-800: #262626;
+      --accent: #2563eb;
+      --accent-light: #dbeafe;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--black);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Layout */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 120px 0 80px;
+    }
+
+    .hero-title {
+      font-size: clamp(72px, 15vw, 140px);
+      font-weight: 900;
+      letter-spacing: -4px;
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border: 1px solid var(--gray-200);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--gray-600);
+      margin-bottom: 24px;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(24px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      color: var(--gray-500);
+      max-width: 480px;
+      margin: 0 auto 48px;
+    }
+
+    /* Divider */
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: var(--gray-200);
+      margin: 32px auto;
+    }
+
+    /* Install Section */
+    .install-section {
+      text-align: center;
+      background: var(--gray-50);
+      border-top: 1px solid var(--gray-100);
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .install-section h2 {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .install-section .sub {
+      color: var(--gray-500);
+      font-size: 15px;
+      margin-bottom: 40px;
+    }
+
+    .tab-group {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+
+    .tab {
+      padding: 8px 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab.active {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .tab:not(.active) {
+      background: var(--gray-100);
+      color: var(--gray-600);
+    }
+
+    .step-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-align: left;
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      background: var(--black);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .step-icon {
+      flex-shrink: 0;
+      font-size: 18px;
+      color: var(--gray-500);
+    }
+
+    .step-cmd {
+      flex: 1;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--black);
+      word-break: break-all;
+    }
+
+    .step-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .copy-btn {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: none;
+      color: var(--gray-500);
+      font-size: 13px;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .copy-btn:hover { color: var(--black); background: var(--gray-100); }
+
+    .copy-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .install-done {
+      margin-top: 24px;
+      font-size: 15px;
+      color: var(--gray-500);
+    }
+
+    .install-done code {
+      background: var(--gray-100);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 13px;
+      color: var(--black);
+    }
+
+    /* Hashtags */
+    .hashtags {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .hashtag {
+      padding: 6px 14px;
+      background: var(--black);
+      color: var(--white);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .hashtag.outline {
+      background: transparent;
+      color: var(--gray-600);
+      border: 1px solid var(--gray-200);
+    }
+
+    /* Team Section */
+    .team-section h2 {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .team-section .sub {
+      text-align: center;
+      color: var(--gray-500);
+      font-size: 15px;
+      margin-bottom: 48px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .agent-card {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-100);
+      border-radius: 16px;
+      padding: 28px;
+      transition: all 0.2s;
+    }
+
+    .agent-card:hover {
+      border-color: var(--gray-300);
+      transform: translateY(-2px);
+    }
+
+    .agent-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .agent-emoji {
+      font-size: 28px;
+    }
+
+    .agent-name {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .agent-role {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .agent-desc {
+      font-size: 14px;
+      color: var(--gray-600);
+      line-height: 1.6;
+    }
+
+    /* Commands Section */
+    .commands-section {
+      background: var(--gray-50);
+      border-top: 1px solid var(--gray-100);
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .commands-section h2 {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .commands-section .sub {
+      text-align: center;
+      color: var(--gray-500);
+      font-size: 15px;
+      margin-bottom: 40px;
+    }
+
+    .cmd-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .cmd-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 16px 20px;
+    }
+
+    .cmd-name {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--black);
+      white-space: nowrap;
+      min-width: 130px;
+    }
+
+    .cmd-desc {
+      font-size: 14px;
+      color: var(--gray-500);
+    }
+
+    /* Tribute Section */
+    .tribute-section {
+      text-align: center;
+    }
+
+    .tribute-section h2 {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .tribute-section .sub {
+      color: var(--gray-500);
+      font-size: 15px;
+      margin-bottom: 48px;
+    }
+
+    .tribute-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      text-align: left;
+    }
+
+    .tribute-card {
+      border: 1px solid var(--gray-200);
+      border-radius: 16px;
+      padding: 32px;
+      background: var(--white);
+    }
+
+    .tribute-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .tribute-card .role {
+      font-size: 13px;
+      color: var(--gray-500);
+      margin-bottom: 16px;
+    }
+
+    .tribute-card p {
+      font-size: 15px;
+      color: var(--gray-600);
+      line-height: 1.7;
+    }
+
+    .tribute-card a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .tribute-card a:hover { text-decoration: underline; }
+
+    /* Disclaimer */
+    .disclaimer {
+      text-align: center;
+      padding: 48px 0;
+      border-top: 1px solid var(--gray-100);
+    }
+
+    .disclaimer-box {
+      display: inline-block;
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 24px 32px;
+      max-width: 600px;
+    }
+
+    .disclaimer-box h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--gray-700);
+    }
+
+    .disclaimer-box p {
+      font-size: 13px;
+      color: var(--gray-500);
+      line-height: 1.7;
+    }
+
+    /* CTA */
+    .cta-section {
+      text-align: center;
+      padding: 80px 0 60px;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 32px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--black);
+      color: var(--white);
+      padding: 14px 36px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--gray-100);
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-size: 20px;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--gray-500);
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .footer-links a:hover { color: var(--black); }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--gray-500);
+    }
+
+    /* Responsive */
+    @media (min-width: 640px) {
+      .team-grid { grid-template-columns: 1fr 1fr; }
+      .tribute-cards { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .step-card { flex-wrap: wrap; }
+      .cmd-item { flex-direction: column; align-items: flex-start; gap: 4px; }
+      .cmd-name { min-width: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">Jkit</h1>
+      <div class="hero-badge">CTO-Led Agent Team</div>
+      <h2 class="hero-subtitle">팀과 함께 만드니까<br>처음이어도 됩니다.</h2>
+      <p class="hero-desc">
+        VibeCTO가 이끄는 5인 에이전트 팀과 함께<br>
+        진짜 프로젝트를 처음부터 빌드하세요.
+      </p>
+      <div class="hashtags">
+        <span class="hashtag">#JustBuildIt</span>
+        <span class="hashtag outline">#CTOAgentTeam</span>
+        <span class="hashtag outline">#LearnByDoing</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Install -->
+  <section class="install-section" id="install">
+    <div class="container">
+      <h2>"2줄이면 끝"</h2>
+      <p class="sub">Claude Code에서 바로 시작하세요</p>
+
+      <div class="tab-group">
+        <button class="tab active">Claude Code</button>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <span class="step-icon">>_</span>
+        <div>
+          <div class="step-label">Clone Repository</div>
+          <div class="step-cmd">git clone --recursive https://github.com/goodlookingprokim/jkit-project-guide.git</div>
+        </div>
+        <button class="copy-btn" onclick="copyCmd(this, 'git clone --recursive https://github.com/goodlookingprokim/jkit-project-guide.git')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          Copy
+        </button>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <span class="step-icon">>_</span>
+        <div>
+          <div class="step-label">Open in Claude Code</div>
+          <div class="step-cmd">cd jkit-project-guide && claude</div>
+        </div>
+        <button class="copy-btn" onclick="copyCmd(this, 'cd jkit-project-guide && claude')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          Copy
+        </button>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <span class="step-icon">>_</span>
+        <div>
+          <div class="step-label">Start Building</div>
+          <div class="step-cmd">/jkit-start</div>
+        </div>
+        <button class="copy-btn" onclick="copyCmd(this, '/jkit-start')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          Copy
+        </button>
+      </div>
+
+      <p class="install-done">끝. 이제 <code>/jkit-start</code> 로 시작하세요.</p>
+    </div>
+  </section>
+
+  <!-- bkit Plugin Install -->
+  <section class="install-section" id="bkit-install" style="background: var(--white);">
+    <div class="container">
+      <h2>bkit도 함께 설치하세요</h2>
+      <p class="sub">Jkit은 bkit 위에서 동작합니다. Claude Code Marketplace에서 설치하세요.</p>
+
+      <div class="tab-group">
+        <button class="tab active">Claude Code</button>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <span class="step-icon">>_</span>
+        <div>
+          <div class="step-label">Register Marketplace</div>
+          <div class="step-cmd">/plugin marketplace add popup-studio-ai/bkit-claude-code</div>
+        </div>
+        <button class="copy-btn" onclick="copyCmd(this, '/plugin marketplace add popup-studio-ai/bkit-claude-code')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          Copy
+        </button>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <span class="step-icon">>_</span>
+        <div>
+          <div class="step-label">Install Plugin</div>
+          <div class="step-cmd">/plugin install bkit</div>
+        </div>
+        <button class="copy-btn" onclick="copyCmd(this, '/plugin install bkit')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          Copy
+        </button>
+      </div>
+
+      <p class="install-done">설치 완료! bkit의 PDCA 엔진과 16+ 전문 에이전트를 활용할 수 있습니다.</p>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="team-section" id="team">
+    <div class="container">
+      <h2>Your Agent Team</h2>
+      <p class="sub">"혼자가 아닙니다. 팀이 함께합니다."</p>
+
+      <div class="team-grid">
+        <div class="agent-card">
+          <div class="agent-header">
+            <span class="agent-emoji">🎯</span>
+            <div>
+              <div class="agent-name">VibeCTO</div>
+              <div class="agent-role">Team Lead</div>
+            </div>
+          </div>
+          <p class="agent-desc">아이디어를 발굴하고, 기술 방향을 결정하며, 팀 전체를 조율합니다. 프로젝트의 컨트롤 타워.</p>
+        </div>
+
+        <div class="agent-card">
+          <div class="agent-header">
+            <span class="agent-emoji">🧪</span>
+            <div>
+              <div class="agent-name">TDD Coach</div>
+              <div class="agent-role">Quality Guardian</div>
+            </div>
+          </div>
+          <p class="agent-desc">테스트를 먼저 작성하고, 최소 코드로 통과시키고, 리팩토링합니다. Red-Green-Refactor.</p>
+        </div>
+
+        <div class="agent-card">
+          <div class="agent-header">
+            <span class="agent-emoji">🏗️</span>
+            <div>
+              <div class="agent-name">Arch Mentor</div>
+              <div class="agent-role">Architecture Expert</div>
+            </div>
+          </div>
+          <p class="agent-desc">Clean Architecture를 설계하고, 폴더 구조를 잡고, 의존성 규칙을 검증합니다.</p>
+        </div>
+
+        <div class="agent-card">
+          <div class="agent-header">
+            <span class="agent-emoji">🎨</span>
+            <div>
+              <div class="agent-name">Frontend Buddy</div>
+              <div class="agent-role">UI/UX Specialist</div>
+            </div>
+          </div>
+          <p class="agent-desc">Next.js, Tailwind CSS, shadcn/ui로 반응형 UI를 구현합니다. 예쁘고 접근성 좋은 인터페이스.</p>
+        </div>
+
+        <div class="agent-card" style="grid-column: 1 / -1;">
+          <div class="agent-header">
+            <span class="agent-emoji">☁️</span>
+            <div>
+              <div class="agent-name">SaaS Guide</div>
+              <div class="agent-role">Backend & Deploy</div>
+            </div>
+          </div>
+          <p class="agent-desc">Supabase 인증, 데이터베이스, 결제 연동, Vercel 배포까지. 백엔드의 모든 것을 안내합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Commands -->
+  <section class="commands-section" id="commands">
+    <div class="container">
+      <h2>Slash Commands</h2>
+      <p class="sub">Claude Code에서 바로 사용하세요</p>
+
+      <div class="cmd-list">
+        <div class="cmd-item">
+          <span class="cmd-name">/jkit-start</span>
+          <span class="cmd-desc">VibeCTO와 아이디어 발견 대화 시작</span>
+        </div>
+        <div class="cmd-item">
+          <span class="cmd-name">/jkit-plan</span>
+          <span class="cmd-desc">아이디어를 실행 가능한 프로젝트 계획으로 전환</span>
+        </div>
+        <div class="cmd-item">
+          <span class="cmd-name">/jkit-build</span>
+          <span class="cmd-desc">기능 구현 시작 또는 계속</span>
+        </div>
+        <div class="cmd-item">
+          <span class="cmd-name">/jkit-test</span>
+          <span class="cmd-desc">TDD 워크플로우 (Red-Green-Refactor)</span>
+        </div>
+        <div class="cmd-item">
+          <span class="cmd-name">/jkit-review</span>
+          <span class="cmd-desc">코드 리뷰 + 아키텍처 검증</span>
+        </div>
+        <div class="cmd-item">
+          <span class="cmd-name">/jkit-team</span>
+          <span class="cmd-desc">Agent Team 모드 활성화 (병렬 작업)</span>
+        </div>
+        <div class="cmd-item">
+          <span class="cmd-name">/jkit-status</span>
+          <span class="cmd-desc">프로젝트 진행 상황 확인</span>
+        </div>
+        <div class="cmd-item">
+          <span class="cmd-name">/jkit-next</span>
+          <span class="cmd-desc">VibeCTO의 다음 작업 추천</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tribute -->
+  <section class="tribute-section" id="tribute">
+    <div class="container">
+      <h2>Credits & Tribute</h2>
+      <p class="sub">Jkit을 만들 수 있었던 건 이분들 덕분입니다</p>
+
+      <div class="tribute-cards">
+        <div class="tribute-card">
+          <h3>bkit</h3>
+          <div class="role">by POPUP STUDIO</div>
+          <p>
+            AI-Native 개발의 새로운 기준을 제시한 프레임워크.
+            PDCA 사이클, CTO Agent Teams, 16+ 전문 에이전트 — bkit이 없었다면
+            Jkit도 없었을 것입니다.
+            이 프로젝트는 bkit에 대한 깊은 존경과 팬심에서 시작되었습니다.
+          </p>
+          <p style="margin-top: 12px;">
+            <a href="https://github.com/popup-studio-ai/bkit-claude-code">GitHub</a> ·
+            <a href="https://www.bkit.ai/">bkit.ai</a>
+          </p>
+        </div>
+
+        <div class="tribute-card">
+          <h3>코드팩토리 (최지호)</h3>
+          <div class="role">"안티그래비티 완벽 가이드" 저자</div>
+          <p>
+            Clean Architecture와 TDD를 누구나 이해할 수 있게 풀어낸 책.
+            Jkit의 Arch Mentor와 TDD Coach는 이 책의 패턴과 철학에서 영감을 받았습니다.
+            코드팩토리님의 가르침에 감사합니다.
+          </p>
+          <p style="margin-top: 12px;">
+            <a href="https://goldenrabbit.co.kr/">골든래빗 출판사</a>
+          </p>
+        </div>
+      </div>
+
+      <div style="margin-top: 32px;">
+        <div class="tribute-card" style="text-align: center; max-width: 480px; margin: 0 auto;">
+          <h3>Claude Code Agent Teams</h3>
+          <div class="role">by Anthropic</div>
+          <p>멀티 에이전트 병렬 실행 기능으로 진짜 '팀 개발'을 가능하게 해준 기술. Jkit의 핵심 인프라.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Disclaimer -->
+  <div class="disclaimer">
+    <div class="container">
+      <div class="disclaimer-box">
+        <h4>Educational Purpose Only</h4>
+        <p>
+          이 프로젝트는 <strong>학습과 교육 목적</strong>으로만 제작되었습니다.
+          상업적 용도가 아니며, bkit과 "안티그래비티 완벽 가이드"에 대한 팬 프로젝트(오마주)입니다.
+          참조 코드는 포함되어 있지 않으며, 원본 도서를 통해 학습하시길 권장합니다.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>한 줄이면 충분합니다.<br>Jkit Agent Team이<br>나머지를 해결합니다.</h2>
+      <a href="#install" class="cta-btn">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-brand">Jkit</div>
+      <div class="footer-links">
+        <a href="https://github.com/goodlookingprokim/jkit-project-guide">GitHub</a>
+        <a href="https://www.bkit.ai/">bkit.ai</a>
+        <a href="https://github.com/popup-studio-ai/bkit-claude-code">bkit GitHub</a>
+        <a href="https://goldenrabbit.co.kr/">골든래빗</a>
+      </div>
+      <p class="footer-copy">
+        Fan project for educational purposes only. Not affiliated with POPUP STUDIO or 골든래빗.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    function copyCmd(btn, text) {
+      navigator.clipboard.writeText(text).then(() => {
+        const original = btn.innerHTML;
+        btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path d="M20 6L9 17l-5-5"/></svg> Copied!';
+        btn.style.color = '#16a34a';
+        setTimeout(() => {
+          btn.innerHTML = original;
+          btn.style.color = '';
+        }, 2000);
+      });
+    }
+  </script>
+
+</body>
+</html>
