@@ -1,0 +1,22 @@
+{
+  "name": "jkit",
+  "version": "1.0.0",
+  "description": "CTO-Led Agent Team Project Guide - Build real projects with VibeCTO and 5 specialized agents. Inspired by bkit and 안티그래비티 완벽 가이드.",
+  "author": {
+    "name": "goodlookingprokim",
+    "url": "https://github.com/goodlookingprokim"
+  },
+  "repository": "https://github.com/goodlookingprokim/jkit-project-guide",
+  "license": "MIT",
+  "keywords": [
+    "agent-team",
+    "cto",
+    "tdd",
+    "clean-architecture",
+    "project-guide",
+    "beginner",
+    "vibecoding",
+    "learning",
+    "korean"
+  ]
+}

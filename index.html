@@ -546,96 +546,85 @@
     </div>
   </section>
 
-  <!-- Install -->
+  <!-- Install: Marketplace -->
   <section class="install-section" id="install">
     <div class="container">
       <h2>"2줄이면 끝"</h2>
-      <p class="sub">Claude Code에서 바로 시작하세요</p>
+      <p class="sub">Claude Code Marketplace에서 바로 설치하세요</p>
 
       <div class="tab-group">
-        <button class="tab active">Claude Code</button>
+        <button class="tab active" onclick="showTab('jkit')">Jkit</button>
+        <button class="tab" onclick="showTab('bkit')">bkit</button>
       </div>
 
-      <div class="step-card">
-        <div class="step-num">1</div>
-        <span class="step-icon">>_</span>
-        <div>
-          <div class="step-label">Clone Repository</div>
-          <div class="step-cmd">git clone --recursive https://github.com/goodlookingprokim/jkit-project-guide.git</div>
+      <!-- Jkit Install -->
+      <div id="tab-jkit">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <span class="step-icon">>_</span>
+          <div>
+            <div class="step-label">Register Marketplace</div>
+            <div class="step-cmd">/plugin marketplace add goodlookingprokim/jkit-project-guide</div>
+          </div>
+          <button class="copy-btn" onclick="copyCmd(this, '/plugin marketplace add goodlookingprokim/jkit-project-guide')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            Copy
+          </button>
         </div>
-        <button class="copy-btn" onclick="copyCmd(this, 'git clone --recursive https://github.com/goodlookingprokim/jkit-project-guide.git')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-          Copy
-        </button>
-      </div>
 
-      <div class="step-card">
-        <div class="step-num">2</div>
-        <span class="step-icon">>_</span>
-        <div>
-          <div class="step-label">Open in Claude Code</div>
-          <div class="step-cmd">cd jkit-project-guide && claude</div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <span class="step-icon">>_</span>
+          <div>
+            <div class="step-label">Install Plugin</div>
+            <div class="step-cmd">/plugin install jkit</div>
+          </div>
+          <button class="copy-btn" onclick="copyCmd(this, '/plugin install jkit')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            Copy
+          </button>
         </div>
-        <button class="copy-btn" onclick="copyCmd(this, 'cd jkit-project-guide && claude')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-          Copy
-        </button>
+
+        <p class="install-done">끝. 이제 <code>/jkit-start</code> 로 시작하세요.</p>
       </div>
 
-      <div class="step-card">
-        <div class="step-num">3</div>
-        <span class="step-icon">>_</span>
-        <div>
-          <div class="step-label">Start Building</div>
-          <div class="step-cmd">/jkit-start</div>
+      <!-- bkit Install -->
+      <div id="tab-bkit" style="display: none;">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <span class="step-icon">>_</span>
+          <div>
+            <div class="step-label">Register Marketplace</div>
+            <div class="step-cmd">/plugin marketplace add popup-studio-ai/bkit-claude-code</div>
+          </div>
+          <button class="copy-btn" onclick="copyCmd(this, '/plugin marketplace add popup-studio-ai/bkit-claude-code')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            Copy
+          </button>
         </div>
-        <button class="copy-btn" onclick="copyCmd(this, '/jkit-start')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-          Copy
-        </button>
-      </div>
 
-      <p class="install-done">끝. 이제 <code>/jkit-start</code> 로 시작하세요.</p>
-    </div>
-  </section>
-
-  <!-- bkit Plugin Install -->
-  <section class="install-section" id="bkit-install" style="background: var(--white);">
-    <div class="container">
-      <h2>bkit도 함께 설치하세요</h2>
-      <p class="sub">Jkit은 bkit 위에서 동작합니다. Claude Code Marketplace에서 설치하세요.</p>
-
-      <div class="tab-group">
-        <button class="tab active">Claude Code</button>
-      </div>
-
-      <div class="step-card">
-        <div class="step-num">1</div>
-        <span class="step-icon">>_</span>
-        <div>
-          <div class="step-label">Register Marketplace</div>
-          <div class="step-cmd">/plugin marketplace add popup-studio-ai/bkit-claude-code</div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <span class="step-icon">>_</span>
+          <div>
+            <div class="step-label">Install Plugin</div>
+            <div class="step-cmd">/plugin install bkit</div>
+          </div>
+          <button class="copy-btn" onclick="copyCmd(this, '/plugin install bkit')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            Copy
+          </button>
         </div>
-        <button class="copy-btn" onclick="copyCmd(this, '/plugin marketplace add popup-studio-ai/bkit-claude-code')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-          Copy
-        </button>
+
+        <p class="install-done">bkit의 PDCA 엔진과 16+ 전문 에이전트를 함께 활용하세요.</p>
       </div>
 
-      <div class="step-card">
-        <div class="step-num">2</div>
-        <span class="step-icon">>_</span>
-        <div>
-          <div class="step-label">Install Plugin</div>
-          <div class="step-cmd">/plugin install bkit</div>
-        </div>
-        <button class="copy-btn" onclick="copyCmd(this, '/plugin install bkit')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-          Copy
-        </button>
-      </div>
+      <div class="divider"></div>
 
-      <p class="install-done">설치 완료! bkit의 PDCA 엔진과 16+ 전문 에이전트를 활용할 수 있습니다.</p>
+      <p style="font-size: 13px; color: var(--gray-500); margin-top: 16px;">
+        또는 Git으로 직접 설치:
+        <code style="background: var(--gray-100); padding: 3px 8px; border-radius: 4px; font-size: 12px;">git clone --recursive https://github.com/goodlookingprokim/jkit-project-guide.git</code>
+      </p>
     </div>
   </section>
 
@@ -832,6 +821,14 @@
   </footer>
 
   <script>
+    function showTab(name) {
+      document.getElementById('tab-jkit').style.display = name === 'jkit' ? 'block' : 'none';
+      document.getElementById('tab-bkit').style.display = name === 'bkit' ? 'block' : 'none';
+      document.querySelectorAll('.tab-group .tab').forEach(t => {
+        t.classList.toggle('active', t.textContent.trim().toLowerCase() === name);
+      });
+    }
+
     function copyCmd(btn, text) {
       navigator.clipboard.writeText(text).then(() => {
         const original = btn.innerHTML;

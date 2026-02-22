@@ -1,0 +1,38 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "jkit-marketplace",
+  "version": "1.0.0",
+  "description": "Jkit - CTO-Led Agent Team Project Guide marketplace. Build real projects with VibeCTO and specialized agents.",
+  "owner": {
+    "name": "goodlookingprokim",
+    "url": "https://github.com/goodlookingprokim"
+  },
+  "plugins": [
+    {
+      "name": "jkit",
+      "description": "CTO-Led Agent Team Project Guide - 5 agents (VibeCTO, TDD Coach, Arch Mentor, Frontend Buddy, SaaS Guide) and 9 slash commands for building real projects from scratch. Inspired by bkit and 안티그래비티 완벽 가이드.",
+      "version": "1.0.0",
+      "author": {
+        "name": "goodlookingprokim",
+        "url": "https://github.com/goodlookingprokim"
+      },
+      "repository": "https://github.com/goodlookingprokim/jkit-project-guide",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/goodlookingprokim/jkit-project-guide.git"
+      },
+      "category": "learning",
+      "keywords": [
+        "agent-team",
+        "cto",
+        "tdd",
+        "clean-architecture",
+        "project-guide",
+        "beginner",
+        "vibecoding",
+        "learning",
+        "korean"
+      ]
+    }
+  ]
+}
