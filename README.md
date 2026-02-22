@@ -73,7 +73,7 @@ export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
 ## Credits
 
 - **[Bkit](https://github.com/popup-studio-ai/bkit-claude-code)** - AI-Native 개발 프레임워크 (submodule로 포함)
-- **골든래빗 "반중력"** (코드팩토리 저) - Clean Architecture, TDD 참조 패턴 (코드 미포함, 도서 참조)
+- **"안티그래비티 완벽 가이드"** (코드팩토리 최지호 저, 골든래빗) - Clean Architecture, TDD 참조 패턴 (코드 미포함, 도서 참조)
 - **Claude Code Agent Teams** - Anthropic의 멀티 에이전트 기능 활용
 
 ## License
