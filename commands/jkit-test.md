@@ -1,3 +1,18 @@
+---
+name: jkit-test
+description: |
+  Jkit Test — TDD Workflow. Apply Red-Green-Refactor test-driven development.
+  Triggers: test, tdd, 테스트, coverage, vitest, jest, red green refactor
+user-invocable: true
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
+---
+
 # Jkit Test — TDD Workflow
 
 **Agent**: Use the `tdd-coach` agent for this command.

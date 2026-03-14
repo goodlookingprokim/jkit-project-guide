@@ -1,3 +1,19 @@
+---
+name: jkit-team
+description: |
+  Jkit Team — Agent Team Mode. Activate parallel work with specialist agents.
+  Triggers: team, 팀, parallel, agent team, 병렬 작업, coordinate
+user-invocable: true
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
+  - AskUserQuestion
+---
+
 # Jkit Team — Agent Team Mode
 
 **Agent**: Use the `vibe-cto` agent for this command.

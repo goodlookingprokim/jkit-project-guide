@@ -1,3 +1,19 @@
+---
+name: jkit-plan
+description: |
+  Jkit Plan — Project Planning. Turn discovered ideas into actionable implementation plans.
+  Triggers: plan, planning, 계획, requirements, TCREI, architecture design
+user-invocable: true
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
+  - AskUserQuestion
+---
+
 # Jkit Plan — Project Planning
 
 **Agent**: Use the `vibe-cto` agent for this command.

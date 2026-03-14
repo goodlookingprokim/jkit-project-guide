@@ -1,3 +1,19 @@
+---
+name: jkit-next
+description: |
+  Jkit Next — What To Do Next. VibeCTO recommends the most impactful next task.
+  Triggers: next, 다음, what next, 뭐 할까, recommend, priority
+user-invocable: true
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
+  - AskUserQuestion
+---
+
 # Jkit Next — What To Do Next
 
 **Agent**: Use the `vibe-cto` agent for this command.

@@ -1,3 +1,16 @@
+---
+name: jkit-status
+description: |
+  Jkit Status — Project Progress. Show comprehensive project state overview.
+  Triggers: status, progress, 현황, 진행 상황, project state
+user-invocable: true
+allowed-tools:
+  - Read
+  - Glob
+  - Grep
+  - Bash
+---
+
 # Jkit Status — Project Progress
 
 **Language**: Respond in **Korean** for all user-facing messages.

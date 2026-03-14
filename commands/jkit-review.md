@@ -1,3 +1,18 @@
+---
+name: jkit-review
+description: |
+  Jkit Review — Code Review & Architecture Verification. Check architecture compliance and code quality.
+  Triggers: review, 리뷰, architecture check, code quality, 코드 리뷰, verify
+user-invocable: true
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
+---
+
 # Jkit Review — Code Review & Architecture Verification
 
 **Agent**: Use the `arch-mentor` agent for this command.

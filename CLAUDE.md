@@ -1,4 +1,4 @@
-# Jkit - VibeCTO & Agent Team Project Companion
+# Jkit - VibeCTO & Agent Team Project Companion (v1.1.0)
 
 ## What is Jkit?
 
@@ -11,6 +11,37 @@ Instead of learning theory first, you work **with** a team: VibeCTO leads, speci
 - 🏗️ **Arch Mentor** — Designs Clean Architecture, verifies dependency rules
 - 🎨 **Frontend Buddy** — Builds UI with Next.js, Tailwind CSS, shadcn/ui
 - ☁️ **SaaS Guide** — Handles Supabase, payments, APIs, deployment
+
+## Plugin Structure (v1.1.0)
+
+```
+jkit-project-guide/
+├── commands/           # 9 slash commands (plugin root)
+│   ├── jkit.md
+│   ├── jkit-start.md
+│   ├── jkit-plan.md
+│   ├── jkit-build.md
+│   ├── jkit-test.md
+│   ├── jkit-review.md
+│   ├── jkit-team.md
+│   ├── jkit-status.md
+│   └── jkit-next.md
+├── agents/             # 5 specialist agents (plugin root)
+│   ├── vibe-cto.md
+│   ├── tdd-coach.md
+│   ├── arch-mentor.md
+│   ├── frontend-buddy.md
+│   └── saas-guide.md
+├── hooks/              # Session initialization
+│   ├── hooks.json
+│   └── session-start.js
+├── .claude-plugin/     # Plugin metadata
+│   ├── plugin.json
+│   └── marketplace.json
+├── CLAUDE.md           # This file
+├── bkit-claude-code/   # bkit submodule (One Family integration)
+└── axys/               # AXYS system
+```
 
 ## Quick Reference — Slash Commands
 
@@ -25,6 +56,22 @@ Instead of learning theory first, you work **with** a team: VibeCTO leads, speci
 | `/jkit-team` | Activate Agent Team mode for parallel work |
 | `/jkit-status` | Check project progress |
 | `/jkit-next` | Get VibeCTO's recommendation for what to do next |
+
+## bkit One Family Integration
+
+When bkit is installed alongside jkit, they work as "One Family":
+- **jkit** provides beginner-friendly guided workflows with VibeCTO team
+- **bkit** provides PDCA pipeline, gap analysis, quality tools, and advanced automation
+- Both share Agent Teams infrastructure
+- Use `/pdca` commands alongside `/jkit` commands for full development workflow
+- Session hooks detect each other and provide integrated onboarding
+
+## Hooks System (v1.1.0)
+
+jkit uses Claude Code's hooks system for session initialization:
+- **SessionStart hook** (`hooks/session-start.js`): Detects project state, bkit integration, and provides onboarding
+- bkit's hooks handle PreToolUse, PostToolUse, Stop, and other lifecycle events
+- No duplication — jkit only registers SessionStart, bkit handles the rest
 
 ## Knowledge Base — Golden Rabbit Reference Projects
 

@@ -1,3 +1,20 @@
+---
+name: jkit-start
+description: |
+  Jkit Start — Project Discovery. VibeCTO discovers and shapes project ideas through conversation.
+  Triggers: start project, new idea, 프로젝트 시작, 아이디어, begin, create
+user-invocable: true
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
+  - AskUserQuestion
+  - WebSearch
+---
+
 # Jkit Start — Project Discovery
 
 **Agent**: Use the `vibe-cto` agent for this command.

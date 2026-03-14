@@ -1,4 +1,4 @@
-# Jkit - CTO-Led Agent Team Project Guide
+# Jkit - CTO-Led Agent Team Project Guide (v1.1.0)
 
 Jkit은 **CTO 주도 에이전트 팀**과 함께 실제 프로젝트를 처음부터 만드는 Claude Code 프로젝트 가이드입니다.
 이론을 먼저 배우는 대신, 팀과 함께 일하며 배웁니다.
@@ -38,6 +38,30 @@ Claude Code에서 프로젝트 디렉토리를 열고 슬래시 커맨드를 사
 /jkit         # 메인 허브 (가이드 표시)
 ```
 
+## Plugin Structure (v1.1.0)
+
+```
+jkit-project-guide/
+├── commands/           # 9 slash commands (plugin root)
+├── agents/             # 5 specialist agents (plugin root)
+├── hooks/              # Session initialization (SessionStart hook)
+├── .claude-plugin/     # Plugin metadata (v1.1.0)
+├── CLAUDE.md           # Project context
+├── bkit-claude-code/   # bkit submodule (One Family integration)
+├── golden-rabbit-antigravity-v1/  # Knowledge base
+└── axys/               # AXYS system
+```
+
+> **v1.1.0**: commands/agents를 `.claude/` 하위에서 플러그인 루트로 이동. hooks 시스템 추가. bkit "One Family" 연동 구현.
+
+## bkit One Family Integration
+
+jkit과 bkit이 함께 설치되면 "One Family"로 동작합니다:
+- **jkit**: 초보자 친화적 가이드 워크플로우 (VibeCTO 팀)
+- **bkit**: PDCA 파이프라인, 갭 분석, 품질 도구
+- 세션 시작 시 상호 감지하여 통합 온보딩 제공
+- Agent Teams 인프라 공유
+
 ## Tech Stack (Default)
 
 | Layer | Technology |
@@ -69,6 +93,22 @@ export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
 ```
 
 `/jkit-team start`로 활성화하면 VibeCTO가 팀을 조율합니다.
+
+## Release Notes
+
+### v1.1.0 (2026-03-15)
+- **구조 개편**: `.claude/commands/` → `commands/`, `.claude/agents/` → `agents/` (플러그인 루트로 이동)
+- **frontmatter 추가**: 모든 command .md 파일에 YAML frontmatter (`user-invocable: true`, `allowed-tools`) 추가
+- **hooks 시스템**: `hooks/hooks.json` + `hooks/session-start.js` 추가 (세션 초기화)
+- **bkit One Family**: bkit 감지 및 통합 온보딩 구현
+- **bkit session-start.js 수정**: jkit 감지 로직 추가 (양방향 감지)
+- **`.claude/` 디렉토리 삭제**: settings.json 권한 설정을 각 파일의 frontmatter로 흡수
+
+### v1.0.0 (2025-09-08)
+- 초기 릴리스: VibeCTO + 4 specialist agents
+- 9개 slash commands
+- Golden Rabbit knowledge base 통합
+- bkit-claude-code submodule 포함
 
 ## Credits
 

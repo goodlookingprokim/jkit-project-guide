@@ -1,3 +1,19 @@
+---
+name: jkit-build
+description: |
+  Jkit Build — Feature Implementation. Build features with specialist agent coordination.
+  Triggers: build, implement, 구현, 만들기, create feature, develop
+user-invocable: true
+allowed-tools:
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
+  - AskUserQuestion
+---
+
 # Jkit Build — Feature Implementation
 
 **Agent**: Use the `vibe-cto` agent for this command.

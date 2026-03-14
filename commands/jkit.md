@@ -1,3 +1,15 @@
+---
+name: jkit
+description: |
+  Jkit — Main Hub. Show team introduction and all available commands.
+  Triggers: jkit, 도움말, help, guide, team info
+user-invocable: true
+allowed-tools:
+  - Read
+  - Glob
+  - Grep
+---
+
 # Jkit — Main Hub
 
 Display the Jkit team and all available commands to the user.

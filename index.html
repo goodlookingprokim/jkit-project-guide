@@ -637,7 +637,7 @@
   <section class="hero">
     <div class="container">
       <h1 class="hero-title">Jkit</h1>
-      <div class="hero-badge">CTO-Led Agent Team</div>
+      <div class="hero-badge">CTO-Led Agent Team · v1.1.0</div>
       <h2 class="hero-subtitle">팀과 함께 만드니까<br>처음이어도 됩니다.</h2>
       <p class="hero-desc">
         VibeCTO가 이끄는 5인 에이전트 팀과 함께<br>
@@ -849,6 +849,24 @@
 
       <div id="release-list">
         <div class="release-card open" onclick="this.classList.toggle('open')">
+          <div class="release-header">
+            <span class="release-version">v1.1.0</span>
+            <span class="release-date">2026-03-15</span>
+          </div>
+          <div class="release-title">bkit 호환 플러그인 구조 개편 + One Family 통합</div>
+          <div class="release-body">
+            <ul>
+              <li><strong>구조 개편</strong>: .claude/commands/ → commands/, .claude/agents/ → agents/ (플러그인 루트 배치)</li>
+              <li><strong>frontmatter 추가</strong>: 모든 command에 YAML frontmatter (user-invocable, allowed-tools)</li>
+              <li><strong>hooks 시스템</strong>: hooks/hooks.json + session-start.js (세션 초기화)</li>
+              <li><strong>bkit One Family</strong>: 양방향 감지, 통합 온보딩, PDCA 상태 공유</li>
+              <li><strong>마켓플레이스 수정</strong>: 설치 후 /jkit slash commands 정상 표시</li>
+              <li><strong>.claude/ 삭제</strong>: permissions를 각 파일 frontmatter로 흡수</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="release-card" onclick="this.classList.toggle('open')">
           <div class="release-header">
             <span class="release-version">v1.0.0</span>
             <span class="release-date">2026-02-22</span>
