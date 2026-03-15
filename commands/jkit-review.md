@@ -6,11 +6,10 @@ description: |
 user-invocable: true
 allowed-tools:
   - Read
-  - Write
-  - Edit
   - Glob
   - Grep
   - Bash
+  - AskUserQuestion
 ---
 
 # Jkit Review — Code Review & Architecture Verification

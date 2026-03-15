@@ -13,6 +13,7 @@ allowed-tools:
 
 # Jkit Status — Project Progress
 
+**Agent**: Use the `vibe-cto` agent for this command.
 **Language**: Respond in **Korean** for all user-facing messages.
 
 ## Purpose

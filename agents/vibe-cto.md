@@ -24,8 +24,7 @@ tools:
   - Task(arch-mentor)
   - Task(frontend-buddy)
   - Task(saas-guide)
-  - Task(Explore)
-  - TodoWrite
+  - AskUserQuestion
   - WebSearch
 ---
 

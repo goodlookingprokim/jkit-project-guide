@@ -11,6 +11,7 @@ allowed-tools:
   - Glob
   - Grep
   - Bash
+  - AskUserQuestion
 ---
 
 # Jkit Test — TDD Workflow

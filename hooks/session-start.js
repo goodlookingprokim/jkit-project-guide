@@ -32,19 +32,35 @@ let bkitAvailable = false;
  * Try to load bkit's common library for PDCA status sharing
  */
 function tryLoadBkit() {
+  // Allowed base directories for bkit loading
+  const pluginRoot = path.resolve(__dirname, '..');
+  const homeDir = process.env.HOME || process.env.USERPROFILE || '';
+  const allowedBases = [
+    pluginRoot,
+    homeDir ? path.join(homeDir, '.claude', 'plugins') : null,
+  ].filter(Boolean);
+
   const possiblePaths = [
     // Same repo (submodule)
     path.join(__dirname, '..', 'bkit-claude-code', 'lib', 'common.js'),
     // Plugin cache
-    path.join(process.env.HOME || process.env.USERPROFILE || '', '.claude', 'plugins', 'cache', 'bkit-claude-code', 'lib', 'common.js'),
-  ];
+    homeDir ? path.join(homeDir, '.claude', 'plugins', 'cache', 'bkit-claude-code', 'lib', 'common.js') : null,
+  ].filter(Boolean);
 
   for (const p of possiblePaths) {
     try {
-      if (fs.existsSync(p)) {
-        bkitCommon = require(p);
+      // Validate resolved path is within allowed directories
+      const resolved = path.resolve(p);
+      const isAllowed = allowedBases.some(base => resolved.startsWith(path.resolve(base)));
+      if (!isAllowed) {
+        debugLog('bkit', 'Path outside allowed directories, skipping', { path: resolved });
+        continue;
+      }
+
+      if (fs.existsSync(resolved)) {
+        bkitCommon = require(resolved);
         bkitAvailable = true;
-        debugLog('bkit', 'bkit common.js loaded', { path: p });
+        debugLog('bkit', 'bkit common.js loaded', { path: resolved });
         return;
       }
     } catch (e) {
@@ -72,14 +88,16 @@ function detectProject() {
   try {
     const srcDir = path.join(cwd, 'src');
     if (fs.existsSync(srcDir)) {
-      const findTests = (dir) => {
+      const excludeDirs = new Set(['node_modules', '.next', 'dist', 'build', 'coverage', '.git']);
+      const findTests = (dir, depth = 0) => {
+        if (depth > 10) return false;
         const entries = fs.readdirSync(dir, { withFileTypes: true });
         for (const entry of entries) {
           if (entry.isFile() && (entry.name.endsWith('.test.ts') || entry.name.endsWith('.spec.ts'))) {
             return true;
           }
-          if (entry.isDirectory() && entry.name !== 'node_modules') {
-            if (findTests(path.join(dir, entry.name))) return true;
+          if (entry.isDirectory() && !excludeDirs.has(entry.name)) {
+            if (findTests(path.join(dir, entry.name), depth + 1)) return true;
           }
         }
         return false;
